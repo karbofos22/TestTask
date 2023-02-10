@@ -1,0 +1,25 @@
+﻿@model Offer
+
+@if(ViewBag.Message == null)
+{
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h3 class="card-title">Vendor code: @Model.VendorCode</h3>
+            <hr style="border-top: 2px solid #ccc;">
+            <h4 class="card-text">Description:<br></h4>
+            <p class="card-text">@Model.Description</p>
+            <hr style="border-top: 2px solid #ccc;">
+            <h4 class="card-footer">Price: @Model.Price</h4>
+        </div>
+    </div>
+}
+@if (ViewBag.Message == null && Model.IsAlreadyInDB)
+{
+    <div class="alert alert-warning">The offer with Id @Model.VendorCode is already in the database.</div>
+}
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Message
+    </div>
+}
